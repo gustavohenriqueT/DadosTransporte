@@ -11,16 +11,16 @@ Projeto de ciência de dados para simulação e tratamento de dados de transport
 ### 📜 Script Python (`gerar_dados.py`)
 Gera dataset simulado contendo:
 
-| Coluna | Tipo | Descrição | Emoji |
-|--------|------|-----------|-------|
-| `Data_Hora` | datetime | Registro temporal | 📅 |
-| `ID_Veiculo` | string | Identificação do ônibus | 🚍 | 
-| `Linha` | string | Número da linha | 🏷️ |
-| `Latitude/Longitude` | float | Coordenadas GPS | 📍 |
-| `Numero_Passageiros` | int | Quantidade de passageiros | 👥 |
-| `Tempo_Viagem_Minutos` | int | Duração da viagem | ⏳ |
-| `Dado_Correto` | bool | Indicador de qualidade | ✅❌ |
-| `Horario_Pico` | bool | Período de pico | 🌅🌆 |
+| Coluna | Tipo | Descrição 
+|--------|------|-----------|
+| `Data_Hora` | datetime | Registro temporal 
+| `ID_Veiculo` | string | Identificação do ônibus 
+| `Linha` | string | Número da linha 🏷
+| `Latitude/Longitude` | float | Coordenadas GPS 
+| `Numero_Passageiros` | int | Quantidade de passageiros  
+| `Tempo_Viagem_Minutos` | int | Duração da viagem
+| `Dado_Correto` | bool | Indicador de qualidade 
+| `Horario_Pico` | bool | Período de pico 
 
 **Características especiais**:
 - 15% dos dados contêm erros simulados
