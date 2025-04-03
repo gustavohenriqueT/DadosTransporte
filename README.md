@@ -53,7 +53,7 @@ Fluxo de processamento:
 ## 🚀 Execução
 
 ### 🔧 Pré-requisitos
-```bash
+
 # Python
 pip install pandas numpy
 
