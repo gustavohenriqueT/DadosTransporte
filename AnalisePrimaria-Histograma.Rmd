@@ -1,0 +1,62 @@
+---
+title: "Análise de Dados de Transporte"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+## Importando o arquivo CSV
+```{r}
+df <- read.csv(choose.files(), header = TRUE, sep = ",", stringsAsFactors = FALSE)
+```   
+
+## Explorando os dados
+```{r}
+head(df)
+str(df)
+summary(df)
+```
+
+## Convertendo a coluna Data_Hora para o formato de data/hora
+```{r}
+df$Data_Hora <- as.POSIXct(df$Data_Hora, format="%Y-%m-%d %H:%M:%S")
+```
+
+## Criando gráficos de análise
+```{r}
+ggplot(df, aes(x = Hora)) +
+  geom_bar(fill = "blue") +
+  labs(title = "Distribuição de Registros por Hora", x = "Hora", y = "Frequência")
+
+ggplot(df, aes(x = Numero_Passageiros)) +
+  geom_histogram(binwidth = 5, fill = "green", color = "black") +
+  labs(title = "Distribuição do Número de Passageiros", x = "Passageiros", y = "Frequência")
+```
+
+## Identificando e tratando valores ausentes em colunas numéricas
+```{r}
+num_cols <- c("Numero_Passageiros", "Tempo_Viagem_Minutos")
+for (col in num_cols) {
+  df[[col]][is.na(df[[col]])] <- median(df[[col]], na.rm = TRUE)
+}
+```
+
+## Padronizando os valores das colunas categóricas
+```{r}
+df$Linha <- factor(df$Linha)
+df$ID_Veiculo <- factor(df$ID_Veiculo)
+
+df$Dado_Correto <- as.logical(df$Dado_Correto)
+
+df$Horario_Pico[df$Horario_Pico == 1] <- "Sim"
+df$Horario_Pico[df$Horario_Pico == 0] <- "Não"
+df$Horario_Pico <- factor(df$Horario_Pico)
+```
+
+## Salvando a base de dados tratada
+```{r}
+write.csv(df, "dados_transporte_tratado.csv", row.names = FALSE)
+```
