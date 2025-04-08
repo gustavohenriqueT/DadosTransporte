@@ -106,7 +106,7 @@ limiar_pico = df[df["Dado_Correto"]]["Numero_Passageiros"].quantile(0.75)
 
 df["Horario_Pico"] = (df["Numero_Passageiros"] >= limiar_pico).astype(int)
 
-df["Situacao"] = df["Horario_Pico"].apply(lambda x: "Lenta" if x == 1 else "Rápida")
+df["Situacao"] = df["Horario_Pico"].apply(lambda x: "Lenta" if x == 1 else "Rapida")
 
 df.to_csv("dados_transporte_com_erros.csv", index=False)
 
