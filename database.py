@@ -108,7 +108,7 @@ df["Horario_Pico"] = (df["Numero_Passageiros"] >= limiar_pico).astype(int)
 
 df["Situacao"] = df["Horario_Pico"].apply(lambda x: "Lenta" if x == 1 else "Rapida")
 
-df.to_csv("dados_transporte_com_erros.csv", index=False)
+df.to_csv("dataset.csv", index=False)
 
 print("Dataset 'dados_transporte.csv' gerado com sucesso!")
 print(f"Proporção de dados corretos: {df['Dado_Correto'].mean():.2%}")
